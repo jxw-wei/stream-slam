@@ -1,6 +1,7 @@
 (() => {
   'use strict';
   const dict={
+    'Queue sensitivity and patch depth rebuilding (PDF)':'队列参数与深度重算实验（PDF）',
     'Film':'视频','Explore':'三维浏览','Results':'实验结果','Paper ↗':'论文 ↗','Paper':'论文','Watch the film':'观看视频','Watch the film ↗':'观看视频 ↗',
     'Sparse Tracking and Resource-Efficient Asynchronous Mapping with 3D Gaussians':'基于稀疏跟踪与资源高效异步建图的三维高斯 SLAM',
     'REPLICA / OFFICE 0':'REPLICA / OFFICE 0','Estimated camera path':'估计相机轨迹','Explore in 3D ↗':'进入三维场景 ↗','Explore in 3D':'进入三维场景',
