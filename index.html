@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="design.css?v=16">
   <script src="design.js?v=16" defer></script>
 <link rel="stylesheet" href="refinements.css?v=17">
-<script src="i18n.js?v=18" defer></script>
+<script src="i18n.js?v=19" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#video">Skip to the project film</a>
@@ -48,7 +48,7 @@
       <div id="resultGallery" role="tabpanel" tabindex="0"></div>
       <noscript><p>Enable JavaScript to browse the scene gallery. <a href="assets/stream-slam-paper.pdf">View the paper</a>.</p></noscript>
       <details class="evaluation-notes"><summary>Evaluation &amp; sources</summary><p id="sceneMetricNote"></p><p>Paper-scene ATE and PSNR retain the linked paper’s values. Other scenes use recorded sequence evaluations. ATE is reported in centimeters for indoor datasets and EuRoC, and meters for Waymo and KITTI. Rankings are computed separately for each metric among available results: lower ATE and higher PSNR are better. Red, orange and yellow indicate the three best distinct values, including ties. “—” indicates no valid sequence-level record; no selected-frame score is used as a scene mean.</p><p>The scene table stays fixed when changing the camera view. Quantitative tables include all methods reported in the paper; qualitative images come from saved local runs and do not reproduce the source publications' exact runs. Each image row uses the same physical input frame. Missing local renders are not substituted with another method's output.</p><p>EuRoC: local HI-SLAM2 images use 20 Hz; STREAM-SLAM uses 10 Hz. Frames are matched by camera timestamp. KITTI 04: Photo-SLAM uses stereo input; the other displayed methods use monocular RGB.</p></details>
-      <p class="figure-caption"><a href="assets/stream-slam-additional-experiments.pdf">Queue sensitivity and patch depth rebuilding (PDF)</a></p>
+      <p class="figure-caption"><a href="assets/stream-slam-additional-experiments.pdf">Additional experiments and run-to-run variation (PDF)</a></p>
     </section>
 
     <section id="method" class="media-section method-section">
