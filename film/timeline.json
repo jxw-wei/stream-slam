@@ -1,0 +1,382 @@
+[
+  {
+    "kind": "opening",
+    "section": "",
+    "title": "STREAM-SLAM",
+    "sentences": [
+      "One camera. A moving viewpoint. A detailed three dimensional world.",
+      "This is STREAM SLAM: sparse tracking and resource efficient asynchronous mapping with three dimensional Gaussians."
+    ],
+    "start": 0.0,
+    "duration": 11.433333333333334,
+    "frames": 343,
+    "subtitles": [
+      {
+        "start": 0.4,
+        "end": 4.378095238095238,
+        "text": "One camera. A moving viewpoint. A detailed three dimensional world."
+      },
+      {
+        "start": 4.5980952380952385,
+        "end": 10.693333333333333,
+        "text": "This is STREAM SLAM: sparse tracking and resource efficient asynchronous mapping with three dimensional Gaussians."
+      }
+    ]
+  },
+  {
+    "kind": "depth",
+    "section": "",
+    "title": "Sparse to dense",
+    "sentences": [
+      "The tracker follows a small set of image patches.",
+      "Their depths anchor a pretrained completion model, turning sparse measurements into dense geometry.",
+      "That geometry supplies the starting points for our Gaussian map."
+    ],
+    "start": 11.433333333333334,
+    "duration": 15.966666666666667,
+    "frames": 479,
+    "subtitles": [
+      {
+        "start": 0.6,
+        "end": 3.2643083900226757,
+        "text": "The tracker follows a small set of image patches."
+      },
+      {
+        "start": 4.464308390022675,
+        "end": 9.981043083900227,
+        "text": "Their depths anchor a pretrained completion model, turning sparse measurements into dense geometry."
+      },
+      {
+        "start": 11.181043083900226,
+        "end": 14.466439909297051,
+        "text": "That geometry supplies the starting points for our Gaussian map."
+      }
+    ]
+  },
+  {
+    "kind": "support",
+    "section": "",
+    "title": "Check another view",
+    "voice_length_scale": 1.16,
+    "sentences": [
+      "Completed depth can look smooth and still be unreliable. We check it against nearby keyframes.",
+      "Follow this candidate point. Its depth and the camera poses project it into the neighboring view.",
+      "The projection falls between pixels. We inspect the four surrounding depth samples.",
+      "Compare these samples with the projected depth. A difference below the threshold gives support from this view.",
+      "This second point fails the same check. We also test the other neighbors before deciding whether to reject it.",
+      "No checked view supports this point, so it is removed. The supported point is kept.",
+      "Repeating this check across the image filters unsupported geometry before Gaussian initialization. This checks depth agreement, not semantic identity."
+    ],
+    "start": 27.4,
+    "duration": 55.266666666666666,
+    "frames": 1658,
+    "subtitles": [
+      {
+        "start": 1.0,
+        "end": 6.894557823129252,
+        "text": "Completed depth can look smooth and still be unreliable. We check it against nearby keyframes."
+      },
+      {
+        "start": 8.294557823129251,
+        "end": 13.872290249433107,
+        "text": "Follow this candidate point. Its depth and the camera poses project it into the neighboring view."
+      },
+      {
+        "start": 15.272290249433107,
+        "end": 20.392290249433106,
+        "text": "The projection falls between pixels. We inspect the four surrounding depth samples."
+      },
+      {
+        "start": 21.792290249433105,
+        "end": 27.574058956916097,
+        "text": "Compare these samples with the projected depth. A difference below the threshold gives support from this view."
+      },
+      {
+        "start": 28.974058956916096,
+        "end": 35.386213151927436,
+        "text": "This second point fails the same check. We also test the other neighbors before deciding whether to reject it."
+      },
+      {
+        "start": 36.786213151927434,
+        "end": 41.83655328798186,
+        "text": "No checked view supports this point, so it is removed. The supported point is kept."
+      },
+      {
+        "start": 43.236553287981856,
+        "end": 52.23609977324263,
+        "text": "Repeating this check across the image filters unsupported geometry before Gaussian initialization. This checks depth agreement, not semantic identity."
+      }
+    ]
+  },
+  {
+    "kind": "correction",
+    "section": "",
+    "title": "Keep the map connected",
+    "voice_length_scale": 1.16,
+    "sentences": [
+      "This is a real office reconstruction. Camera estimates can change after parts of the map have already been built.",
+      "The amber Gaussians were created by the highlighted keyframe. Their source label is retained.",
+      "When that camera pose is corrected, the existing Gaussians do not move automatically.",
+      "We apply the same pose correction to their positions and orientations. Each source group follows its own keyframe.",
+      "Here we isolate one source group from a recorded update, replayed slowly. The surrounding map stays fixed as a reference.",
+      "Now compare two saved runs, rendered from the same corrected camera pose.",
+      "Without retrospective correction, the desk and chair boundaries are blurred. With correction, their edges are better preserved."
+    ],
+    "start": 82.66666666666666,
+    "duration": 54.56666666666667,
+    "frames": 1637,
+    "subtitles": [
+      {
+        "start": 1.0,
+        "end": 7.141678004535147,
+        "text": "This is a real office reconstruction. Camera estimates can change after parts of the map have already been built."
+      },
+      {
+        "start": 8.541678004535147,
+        "end": 14.113741496598639,
+        "text": "The amber Gaussians were created by the highlighted keyframe. Their source label is retained."
+      },
+      {
+        "start": 15.513741496598639,
+        "end": 20.48281179138322,
+        "text": "When that camera pose is corrected, the existing Gaussians do not move automatically."
+      },
+      {
+        "start": 21.88281179138322,
+        "end": 28.561179138321993,
+        "text": "We apply the same pose correction to their positions and orientations. Each source group follows its own keyframe."
+      },
+      {
+        "start": 29.96117913832199,
+        "end": 37.316054421768705,
+        "text": "Here we isolate one source group from a recorded update, replayed slowly. The surrounding map stays fixed as a reference."
+      },
+      {
+        "start": 38.7160544217687,
+        "end": 43.41374149659863,
+        "text": "Now compare two saved runs, rendered from the same corrected camera pose."
+      },
+      {
+        "start": 44.81374149659863,
+        "end": 51.54752834467119,
+        "text": "Without retrospective correction, the desk and chair boundaries are blurred. With correction, their edges are better preserved."
+      }
+    ]
+  },
+  {
+    "kind": "async",
+    "section": "",
+    "title": "Two processes. One ordered stream.",
+    "voice_length_scale": 1.18,
+    "sentences": [
+      "Two processes share the work. The tracker follows the camera, while the mapper builds the Gaussian scene.",
+      "When a keyframe is ready, the tracker sends a numbered task to the mapper.",
+      "Notice that tracking can continue while the mapper is still working on the first task.",
+      "The next keyframe, and then a correction to the first, join the same queue. Their order is preserved.",
+      "But pending work cannot grow forever. Here, three unconfirmed tasks fill the illustrated limit.",
+      "The fourth task must wait. Even the task being mapped still counts toward this limit.",
+      "Only after finishing a task does the mapper send confirmation back. This frees one place for the waiting task.",
+      "The remaining tasks finish in order. Before closing, the system waits until every update has been confirmed."
+    ],
+    "start": 137.23333333333332,
+    "duration": 58.3,
+    "frames": 1749,
+    "subtitles": [
+      {
+        "start": 1.0,
+        "end": 6.874648526077097,
+        "text": "Two processes share the work. The tracker follows the camera, while the mapper builds the Gaussian scene."
+      },
+      {
+        "start": 8.274648526077097,
+        "end": 12.473786848072562,
+        "text": "When a keyframe is ready, the tracker sends a numbered task to the mapper."
+      },
+      {
+        "start": 13.873786848072562,
+        "end": 18.341179138321994,
+        "text": "Notice that tracking can continue while the mapper is still working on the first task."
+      },
+      {
+        "start": 19.741179138321993,
+        "end": 25.69179138321995,
+        "text": "The next keyframe, and then a correction to the first, join the same queue. Their order is preserved."
+      },
+      {
+        "start": 27.09179138321995,
+        "end": 33.16380952380952,
+        "text": "But pending work cannot grow forever. Here, three unconfirmed tasks fill the illustrated limit."
+      },
+      {
+        "start": 34.56380952380952,
+        "end": 39.474829931972785,
+        "text": "The fourth task must wait. Even the task being mapped still counts toward this limit."
+      },
+      {
+        "start": 40.87482993197278,
+        "end": 47.484716553287974,
+        "text": "Only after finishing a task does the mapper send confirmation back. This frees one place for the waiting task."
+      },
+      {
+        "start": 48.88471655328797,
+        "end": 55.27092970521541,
+        "text": "The remaining tasks finish in order. Before closing, the system waits until every update has been confirmed."
+      }
+    ]
+  },
+  {
+    "kind": "worlds",
+    "section": "",
+    "title": "Reconstructed from RGB",
+    "sentences": [
+      "Now, step inside the reconstructed maps.",
+      "From furnished rooms and cluttered desks, to aerial views and outdoor driving, these are saved reconstructions from monocular RGB sequences.",
+      "The camera paths come from the estimated poses."
+    ],
+    "start": 195.5333333333333,
+    "duration": 15.566666666666666,
+    "frames": 467,
+    "subtitles": [
+      {
+        "start": 0.4,
+        "end": 3.1229024943310657,
+        "text": "Now, step inside the reconstructed maps."
+      },
+      {
+        "start": 3.342902494331066,
+        "end": 11.926802721088436,
+        "text": "From furnished rooms and cluttered desks, to aerial views and outdoor driving, these are saved reconstructions from monocular RGB sequences."
+      },
+      {
+        "start": 12.146802721088436,
+        "end": 14.824308390022676,
+        "text": "The camera paths come from the estimated poses."
+      }
+    ]
+  },
+  {
+    "kind": "compare",
+    "section": "",
+    "title": "Look closer",
+    "audio_mode": "intro_then_music",
+    "voice_length_scale": 1.08,
+    "sentences": [
+      "Now compare Splat SLAM, HI SLAM two, and STREAM SLAM. Watch the enlarged views for edges and fine textures."
+    ],
+    "start": 211.09999999999997,
+    "duration": 24.0,
+    "frames": 720,
+    "subtitles": [
+      {
+        "start": 0.35,
+        "end": 7.533673469387755,
+        "text": "Now compare Splat SLAM, HI SLAM two, and STREAM SLAM. Watch the enlarged views for edges and fine textures."
+      }
+    ],
+    "music_only_from": 7.783673469387755,
+    "comparison_slots": [
+      {
+        "start": 0.0,
+        "duration": 4.0,
+        "frames": 120
+      },
+      {
+        "start": 4.0,
+        "duration": 4.0,
+        "frames": 120
+      },
+      {
+        "start": 8.0,
+        "duration": 4.0,
+        "frames": 120
+      },
+      {
+        "start": 12.0,
+        "duration": 4.0,
+        "frames": 120
+      },
+      {
+        "start": 16.0,
+        "duration": 4.0,
+        "frames": 120
+      },
+      {
+        "start": 20.0,
+        "duration": 4.0,
+        "frames": 120
+      }
+    ]
+  },
+  {
+    "kind": "accuracy",
+    "section": "",
+    "title": "Replica / eight scenes",
+    "sentences": [
+      "Across eight Replica scenes, mean trajectory error is zero point two three six centimeters.",
+      "Mean PSNR is thirty nine point six zero decibels, using the paper's observed view evaluation."
+    ],
+    "start": 235.09999999999997,
+    "duration": 13.4,
+    "frames": 402,
+    "subtitles": [
+      {
+        "start": 0.4,
+        "end": 5.804036281179139,
+        "text": "Across eight Replica scenes, mean trajectory error is zero point two three six centimeters."
+      },
+      {
+        "start": 6.024036281179138,
+        "end": 12.661768707482993,
+        "text": "Mean PSNR is thirty nine point six zero decibels, using the paper's observed view evaluation."
+      }
+    ]
+  },
+  {
+    "kind": "resources",
+    "section": "",
+    "title": "A smaller memory footprint",
+    "sentences": [
+      "In one common hardware run on Replica office zero, peak GPU memory is five point two three gibibytes, compared with ten point two six for HI SLAM two.",
+      "Processing throughput is similar. These timings exclude scale calibration."
+    ],
+    "start": 248.49999999999997,
+    "duration": 15.2,
+    "frames": 456,
+    "subtitles": [
+      {
+        "start": 0.4,
+        "end": 9.907210884353741,
+        "text": "In one common hardware run on Replica office zero, peak GPU memory is five point two three gibibytes, compared with ten point two six for HI SLAM two."
+      },
+      {
+        "start": 10.127210884353742,
+        "end": 14.457732426303856,
+        "text": "Processing throughput is similar. These timings exclude scale calibration."
+      }
+    ]
+  },
+  {
+    "kind": "closing",
+    "section": "",
+    "title": "STREAM-SLAM",
+    "sentences": [
+      "Sparse measurements. Consistent geometry. Concurrent mapping.",
+      "Explore the reconstructions and camera trajectories on our project page."
+    ],
+    "start": 263.7,
+    "duration": 9.266666666666667,
+    "frames": 278,
+    "subtitles": [
+      {
+        "start": 0.4,
+        "end": 3.955283446712018,
+        "text": "Sparse measurements. Consistent geometry. Concurrent mapping."
+      },
+      {
+        "start": 4.175283446712019,
+        "end": 8.518503401360544,
+        "text": "Explore the reconstructions and camera trajectories on our project page."
+      }
+    ]
+  }
+]

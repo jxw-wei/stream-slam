@@ -1,0 +1,740 @@
+[
+  {
+    "start": 0.516,
+    "end": 1.32,
+    "text": "One camera.",
+    "zh": "一台相机。"
+  },
+  {
+    "start": 1.32,
+    "end": 2.485,
+    "text": "A moving viewpoint.",
+    "zh": "一个移动的视角。"
+  },
+  {
+    "start": 2.485,
+    "end": 4.257,
+    "text": "A detailed three dimensional world.",
+    "zh": "一个细节丰富的三维世界。"
+  },
+  {
+    "start": 4.613,
+    "end": 5.761,
+    "text": "This is STREAM SLAM:",
+    "zh": "这就是 STREAM-SLAM："
+  },
+  {
+    "start": 6.137,
+    "end": 8.082,
+    "text": "sparse tracking and resource efficient",
+    "zh": "将稀疏跟踪与低资源开销的"
+  },
+  {
+    "start": 8.082,
+    "end": 9.024,
+    "text": "asynchronous mapping",
+    "zh": "异步建图相结合，"
+  },
+  {
+    "start": 9.024,
+    "end": 10.613,
+    "text": "with three dimensional Gaussians.",
+    "zh": "以三维高斯表示场景。"
+  },
+  {
+    "start": 12.03,
+    "end": 13.562,
+    "text": "The tracker follows a small set",
+    "zh": "前端跟踪少量"
+  },
+  {
+    "start": 13.562,
+    "end": 14.655,
+    "text": "of image patches.",
+    "zh": "图像块。"
+  },
+  {
+    "start": 15.893,
+    "end": 16.956,
+    "text": "Their depths anchor",
+    "zh": "利用这些图像块的深度，"
+  },
+  {
+    "start": 16.956,
+    "end": 18.525,
+    "text": "a pretrained completion model,",
+    "zh": "约束预训练的深度补全模型，"
+  },
+  {
+    "start": 18.822,
+    "end": 20.125,
+    "text": "turning sparse measurements",
+    "zh": "将稀疏的深度观测"
+  },
+  {
+    "start": 20.125,
+    "end": 21.333,
+    "text": "into dense geometry.",
+    "zh": "转化为稠密几何。"
+  },
+  {
+    "start": 22.63,
+    "end": 24.713,
+    "text": "That geometry supplies the starting points",
+    "zh": "这些几何信息为"
+  },
+  {
+    "start": 24.713,
+    "end": 25.839,
+    "text": "for our Gaussian map.",
+    "zh": "高斯地图提供初始化位置。"
+  },
+  {
+    "start": 28.375,
+    "end": 30.42,
+    "text": "Completed depth can look smooth",
+    "zh": "补全后的深度看起来平滑，"
+  },
+  {
+    "start": 30.42,
+    "end": 32.084,
+    "text": "and still be unreliable.",
+    "zh": "也可能不够可靠。"
+  },
+  {
+    "start": 32.084,
+    "end": 34.154,
+    "text": "We check it against nearby keyframes.",
+    "zh": "我们用邻近关键帧进行检查。"
+  },
+  {
+    "start": 35.69,
+    "end": 37.475,
+    "text": "Follow this candidate point.",
+    "zh": "跟随这个候选点来看。"
+  },
+  {
+    "start": 37.475,
+    "end": 39.161,
+    "text": "Its depth and the camera poses",
+    "zh": "利用它的深度和相机位姿，"
+  },
+  {
+    "start": 39.161,
+    "end": 41.231,
+    "text": "project it into the neighboring view.",
+    "zh": "将它重投影到邻帧中。"
+  },
+  {
+    "start": 42.688,
+    "end": 45.117,
+    "text": "The projection falls between pixels.",
+    "zh": "投影位置落在像素之间。"
+  },
+  {
+    "start": 45.117,
+    "end": 46.141,
+    "text": "We inspect the four",
+    "zh": "我们检查周围的四个"
+  },
+  {
+    "start": 46.141,
+    "end": 47.691,
+    "text": "surrounding depth samples.",
+    "zh": "深度采样值。"
+  },
+  {
+    "start": 49.168,
+    "end": 50.352,
+    "text": "Compare these samples",
+    "zh": "将这些采样值"
+  },
+  {
+    "start": 50.352,
+    "end": 51.817,
+    "text": "with the projected depth.",
+    "zh": "与投影后的深度比较。"
+  },
+  {
+    "start": 51.817,
+    "end": 53.283,
+    "text": "A difference below the threshold",
+    "zh": "只要深度差低于阈值，"
+  },
+  {
+    "start": 53.283,
+    "end": 54.973,
+    "text": "gives support from this view.",
+    "zh": "这个视图就提供一次支持。"
+  },
+  {
+    "start": 56.389,
+    "end": 58.894,
+    "text": "This second point fails the same check.",
+    "zh": "第二个点没有通过同样的检查。"
+  },
+  {
+    "start": 58.894,
+    "end": 60.637,
+    "text": "We also test the other neighbors",
+    "zh": "我们还会检查其余邻帧，"
+  },
+  {
+    "start": 60.637,
+    "end": 62.646,
+    "text": "before deciding whether to reject it.",
+    "zh": "再决定是否剔除它。"
+  },
+  {
+    "start": 64.262,
+    "end": 66.606,
+    "text": "No checked view supports this point,",
+    "zh": "所有检查过的视图都不支持这个点，"
+  },
+  {
+    "start": 66.606,
+    "end": 67.588,
+    "text": "so it is removed.",
+    "zh": "因此将它剔除。"
+  },
+  {
+    "start": 67.588,
+    "end": 69.176,
+    "text": "The supported point is kept.",
+    "zh": "获得支持的点则被保留。"
+  },
+  {
+    "start": 70.712,
+    "end": 72.576,
+    "text": "Repeating this check across the image",
+    "zh": "对整张图像重复这一检查，"
+  },
+  {
+    "start": 72.576,
+    "end": 74.54,
+    "text": "filters unsupported geometry",
+    "zh": "过滤缺少支持的几何点，"
+  },
+  {
+    "start": 74.54,
+    "end": 76.544,
+    "text": "before Gaussian initialization.",
+    "zh": "再用于高斯初始化。"
+  },
+  {
+    "start": 76.544,
+    "end": 78.248,
+    "text": "This checks depth agreement,",
+    "zh": "这里检查的是深度一致性，"
+  },
+  {
+    "start": 78.248,
+    "end": 79.515,
+    "text": "not semantic identity.",
+    "zh": "并不判断语义上是不是同一个物体。"
+  },
+  {
+    "start": 83.722,
+    "end": 85.85,
+    "text": "This is a real office reconstruction.",
+    "zh": "这是实际重建的办公室场景。"
+  },
+  {
+    "start": 85.85,
+    "end": 87.435,
+    "text": "Camera estimates can change",
+    "zh": "相机位姿估计可能发生变化，"
+  },
+  {
+    "start": 87.435,
+    "end": 88.559,
+    "text": "after parts of the map",
+    "zh": "即使部分地图"
+  },
+  {
+    "start": 88.559,
+    "end": 89.747,
+    "text": "have already been built.",
+    "zh": "已经构建完成。"
+  },
+  {
+    "start": 91.204,
+    "end": 93.007,
+    "text": "The amber Gaussians were created",
+    "zh": "琥珀色高斯来自"
+  },
+  {
+    "start": 93.007,
+    "end": 94.891,
+    "text": "by the highlighted keyframe.",
+    "zh": "这个高亮的关键帧。"
+  },
+  {
+    "start": 94.891,
+    "end": 96.72,
+    "text": "Their source label is retained.",
+    "zh": "它们始终保留源关键帧标签。"
+  },
+  {
+    "start": 98.156,
+    "end": 100.299,
+    "text": "When that camera pose is corrected,",
+    "zh": "当这台相机的位姿被修正时，"
+  },
+  {
+    "start": 100.299,
+    "end": 101.542,
+    "text": "the existing Gaussians",
+    "zh": "已经生成的高斯"
+  },
+  {
+    "start": 101.542,
+    "end": 103.129,
+    "text": "do not move automatically.",
+    "zh": "不会自动跟着移动。"
+  },
+  {
+    "start": 104.585,
+    "end": 106.43,
+    "text": "We apply the same pose correction",
+    "zh": "我们将同一个位姿修正"
+  },
+  {
+    "start": 106.43,
+    "end": 108.776,
+    "text": "to their positions and orientations.",
+    "zh": "应用到它们的位置和朝向。"
+  },
+  {
+    "start": 108.776,
+    "end": 110.2,
+    "text": "Each source group follows",
+    "zh": "每一组高斯都跟随"
+  },
+  {
+    "start": 110.2,
+    "end": 111.187,
+    "text": "its own keyframe.",
+    "zh": "自己的源关键帧更新。"
+  },
+  {
+    "start": 112.643,
+    "end": 114.547,
+    "text": "Here we isolate one source group",
+    "zh": "这里单独展示一组高斯，"
+  },
+  {
+    "start": 114.547,
+    "end": 117.332,
+    "text": "from a recorded update, replayed slowly.",
+    "zh": "慢放记录中的一次真实更新。"
+  },
+  {
+    "start": 117.332,
+    "end": 119.056,
+    "text": "The surrounding map stays fixed",
+    "zh": "周围地图保持不动，"
+  },
+  {
+    "start": 119.056,
+    "end": 119.802,
+    "text": "as a reference.",
+    "zh": "作为观察参照。"
+  },
+  {
+    "start": 121.459,
+    "end": 123.189,
+    "text": "Now compare two saved runs,",
+    "zh": "现在对比两次保存的运行结果，"
+  },
+  {
+    "start": 123.506,
+    "end": 124.509,
+    "text": "rendered from the same",
+    "zh": "它们使用完全相同的"
+  },
+  {
+    "start": 124.509,
+    "end": 125.939,
+    "text": "corrected camera pose.",
+    "zh": "修正后相机位姿进行渲染。"
+  },
+  {
+    "start": 127.476,
+    "end": 129.6,
+    "text": "Without retrospective correction,",
+    "zh": "关闭回溯校正时，"
+  },
+  {
+    "start": 129.6,
+    "end": 131.744,
+    "text": "the desk and chair boundaries are blurred.",
+    "zh": "桌椅边界出现模糊。"
+  },
+  {
+    "start": 131.744,
+    "end": 132.606,
+    "text": "With correction,",
+    "zh": "开启回溯校正后，"
+  },
+  {
+    "start": 132.606,
+    "end": 134.214,
+    "text": "their edges are better preserved.",
+    "zh": "边缘得到更好的保留。"
+  },
+  {
+    "start": 138.189,
+    "end": 139.933,
+    "text": "Two processes share the work.",
+    "zh": "两个进程分工协作。"
+  },
+  {
+    "start": 139.933,
+    "end": 141.581,
+    "text": "The tracker follows the camera,",
+    "zh": "跟踪端估计相机的运动，"
+  },
+  {
+    "start": 141.877,
+    "end": 142.92,
+    "text": "while the mapper builds",
+    "zh": "与此同时，建图端构建"
+  },
+  {
+    "start": 142.92,
+    "end": 144.047,
+    "text": "the Gaussian scene.",
+    "zh": "三维高斯场景。"
+  },
+  {
+    "start": 145.504,
+    "end": 147.03,
+    "text": "When a keyframe is ready,",
+    "zh": "当一个关键帧准备就绪，"
+  },
+  {
+    "start": 147.03,
+    "end": 148.939,
+    "text": "the tracker sends a numbered task",
+    "zh": "跟踪端将带编号的任务"
+  },
+  {
+    "start": 148.939,
+    "end": 149.606,
+    "text": "to the mapper.",
+    "zh": "发送给建图端。"
+  },
+  {
+    "start": 151.203,
+    "end": 153.025,
+    "text": "Notice that tracking can continue",
+    "zh": "注意，此时跟踪端仍可继续工作，"
+  },
+  {
+    "start": 153.025,
+    "end": 154.548,
+    "text": "while the mapper is still working",
+    "zh": "而建图端还在处理"
+  },
+  {
+    "start": 154.548,
+    "end": 155.494,
+    "text": "on the first task.",
+    "zh": "第一个任务。"
+  },
+  {
+    "start": 156.99,
+    "end": 158.292,
+    "text": "The next keyframe,",
+    "zh": "接下来的关键帧，"
+  },
+  {
+    "start": 158.292,
+    "end": 160.035,
+    "text": "and then a correction to the first,",
+    "zh": "以及随后对第一个关键帧的修正，"
+  },
+  {
+    "start": 160.035,
+    "end": 161.142,
+    "text": "join the same queue.",
+    "zh": "都进入同一个队列。"
+  },
+  {
+    "start": 161.437,
+    "end": 162.805,
+    "text": "Their order is preserved.",
+    "zh": "处理顺序与发送顺序一致。"
+  },
+  {
+    "start": 164.32,
+    "end": 166.369,
+    "text": "But pending work cannot grow forever.",
+    "zh": "但待确认的任务不能无限积累。"
+  },
+  {
+    "start": 166.665,
+    "end": 168.849,
+    "text": "Here, three unconfirmed tasks",
+    "zh": "在这个示例中，三个未确认的任务"
+  },
+  {
+    "start": 168.849,
+    "end": 170.297,
+    "text": "fill the illustrated limit.",
+    "zh": "就占满了额度。"
+  },
+  {
+    "start": 171.792,
+    "end": 173.556,
+    "text": "The fourth task must wait.",
+    "zh": "第四个任务必须等待。"
+  },
+  {
+    "start": 173.556,
+    "end": 174.979,
+    "text": "Even the task being mapped",
+    "zh": "即使是正在建图的那个任务，"
+  },
+  {
+    "start": 174.979,
+    "end": 176.648,
+    "text": "still counts toward this limit.",
+    "zh": "也仍然占用额度。"
+  },
+  {
+    "start": 178.183,
+    "end": 179.866,
+    "text": "Only after finishing a task",
+    "zh": "只有完成任务以后，"
+  },
+  {
+    "start": 179.866,
+    "end": 182.249,
+    "text": "does the mapper send confirmation back.",
+    "zh": "建图端才会发回完成确认。"
+  },
+  {
+    "start": 182.249,
+    "end": 183.551,
+    "text": "This frees one place",
+    "zh": "确认到达后腾出一个名额，"
+  },
+  {
+    "start": 183.551,
+    "end": 184.598,
+    "text": "for the waiting task.",
+    "zh": "等待的任务才能进入。"
+  },
+  {
+    "start": 186.133,
+    "end": 188.315,
+    "text": "The remaining tasks finish in order.",
+    "zh": "其余任务继续按顺序完成。"
+  },
+  {
+    "start": 188.315,
+    "end": 190.277,
+    "text": "Before closing, the system waits",
+    "zh": "退出前，系统会等待，"
+  },
+  {
+    "start": 190.277,
+    "end": 192.384,
+    "text": "until every update has been confirmed.",
+    "zh": "直到每一项更新都得到确认。"
+  },
+  {
+    "start": 196.01,
+    "end": 198.513,
+    "text": "Now, step inside the reconstructed maps.",
+    "zh": "现在，让我们进入重建的场景。"
+  },
+  {
+    "start": 198.852,
+    "end": 200.962,
+    "text": "From furnished rooms and cluttered desks,",
+    "zh": "从布置完整的房间和杂乱的桌面，"
+  },
+  {
+    "start": 201.258,
+    "end": 203.489,
+    "text": "to aerial views and outdoor driving,",
+    "zh": "到空中视角和室外驾驶场景，"
+  },
+  {
+    "start": 203.805,
+    "end": 205.409,
+    "text": "these are saved reconstructions",
+    "zh": "这些保存的重建结果"
+  },
+  {
+    "start": 205.409,
+    "end": 207.359,
+    "text": "from monocular RGB sequences.",
+    "zh": "均来自单目 RGB 序列。"
+  },
+  {
+    "start": 207.676,
+    "end": 208.863,
+    "text": "The camera paths come",
+    "zh": "画面中的相机轨迹"
+  },
+  {
+    "start": 208.863,
+    "end": 210.276,
+    "text": "from the estimated poses.",
+    "zh": "来自估计的位姿。"
+  },
+  {
+    "start": 211.486,
+    "end": 212.99,
+    "text": "Now compare Splat SLAM,",
+    "zh": "接下来，对比 Splat-SLAM、"
+  },
+  {
+    "start": 212.99,
+    "end": 215.258,
+    "text": "HI SLAM two, and STREAM SLAM.",
+    "zh": "HI-SLAM2 和 STREAM-SLAM。"
+  },
+  {
+    "start": 215.258,
+    "end": 216.682,
+    "text": "Watch the enlarged views",
+    "zh": "请观察放大的局部画面，"
+  },
+  {
+    "start": 216.682,
+    "end": 218.493,
+    "text": "for edges and fine textures.",
+    "zh": "留意边缘与精细纹理。"
+  },
+  {
+    "start": 235.576,
+    "end": 237.047,
+    "text": "Across eight Replica scenes,",
+    "zh": "在 Replica 的八个场景上，"
+  },
+  {
+    "start": 237.384,
+    "end": 238.589,
+    "text": "mean trajectory error is",
+    "zh": "平均轨迹误差为"
+  },
+  {
+    "start": 238.589,
+    "end": 240.783,
+    "text": "zero point two three six centimeters.",
+    "zh": "0.236 厘米。"
+  },
+  {
+    "start": 241.18,
+    "end": 242.643,
+    "text": "Mean PSNR is",
+    "zh": "平均 PSNR 为"
+  },
+  {
+    "start": 242.643,
+    "end": 244.713,
+    "text": "thirty nine point six zero decibels,",
+    "zh": "39.60 分贝，"
+  },
+  {
+    "start": 245.13,
+    "end": 246.012,
+    "text": "using the paper's",
+    "zh": "采用论文中的"
+  },
+  {
+    "start": 246.012,
+    "end": 247.721,
+    "text": "observed view evaluation.",
+    "zh": "已观测视角评测口径。"
+  },
+  {
+    "start": 248.955,
+    "end": 250.416,
+    "text": "In one common hardware run",
+    "zh": "在相同硬件的一次运行中，"
+  },
+  {
+    "start": 250.416,
+    "end": 251.702,
+    "text": "on Replica office zero,",
+    "zh": "以 Replica office0 为例，"
+  },
+  {
+    "start": 252.037,
+    "end": 253.298,
+    "text": "peak GPU memory is",
+    "zh": "峰值 GPU 显存为"
+  },
+  {
+    "start": 253.298,
+    "end": 255.005,
+    "text": "five point two three gibibytes,",
+    "zh": "5.23 GiB，"
+  },
+  {
+    "start": 255.3,
+    "end": 256.981,
+    "text": "compared with ten point two six",
+    "zh": "相比之下，10.26 GiB"
+  },
+  {
+    "start": 256.981,
+    "end": 258.582,
+    "text": "for HI SLAM two.",
+    "zh": "是 HI-SLAM2 的峰值显存。"
+  },
+  {
+    "start": 258.582,
+    "end": 260.467,
+    "text": "Processing throughput is similar.",
+    "zh": "两者的处理吞吐率相近。"
+  },
+  {
+    "start": 260.467,
+    "end": 262.937,
+    "text": "These timings exclude scale calibration.",
+    "zh": "计时不包含尺度标定阶段。"
+  },
+  {
+    "start": 264.075,
+    "end": 265.18,
+    "text": "Sparse measurements.",
+    "zh": "稀疏观测。"
+  },
+  {
+    "start": 265.18,
+    "end": 266.606,
+    "text": "Consistent geometry.",
+    "zh": "一致几何。"
+  },
+  {
+    "start": 266.606,
+    "end": 267.534,
+    "text": "Concurrent mapping.",
+    "zh": "并发建图。"
+  },
+  {
+    "start": 267.951,
+    "end": 269.379,
+    "text": "Explore the reconstructions",
+    "zh": "欢迎探索重建场景"
+  },
+  {
+    "start": 269.379,
+    "end": 270.645,
+    "text": "and camera trajectories",
+    "zh": "与相机轨迹，"
+  },
+  {
+    "start": 270.645,
+    "end": 272.097,
+    "text": "on our project page.",
+    "zh": "更多内容请见项目主页。"
+  }
+]

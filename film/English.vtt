@@ -1,0 +1,493 @@
+WEBVTT
+
+1
+00:00:00.516 --> 00:00:01.320
+One camera.
+
+2
+00:00:01.320 --> 00:00:02.485
+A moving viewpoint.
+
+3
+00:00:02.485 --> 00:00:04.257
+A detailed three dimensional world.
+
+4
+00:00:04.613 --> 00:00:05.761
+This is STREAM SLAM:
+
+5
+00:00:06.137 --> 00:00:08.082
+sparse tracking and resource efficient
+
+6
+00:00:08.082 --> 00:00:09.024
+asynchronous mapping
+
+7
+00:00:09.024 --> 00:00:10.613
+with three dimensional Gaussians.
+
+8
+00:00:12.030 --> 00:00:13.562
+The tracker follows a small set
+
+9
+00:00:13.562 --> 00:00:14.655
+of image patches.
+
+10
+00:00:15.893 --> 00:00:16.956
+Their depths anchor
+
+11
+00:00:16.956 --> 00:00:18.525
+a pretrained completion model,
+
+12
+00:00:18.822 --> 00:00:20.125
+turning sparse measurements
+
+13
+00:00:20.125 --> 00:00:21.333
+into dense geometry.
+
+14
+00:00:22.630 --> 00:00:24.713
+That geometry supplies the starting points
+
+15
+00:00:24.713 --> 00:00:25.839
+for our Gaussian map.
+
+16
+00:00:28.375 --> 00:00:30.420
+Completed depth can look smooth
+
+17
+00:00:30.420 --> 00:00:32.084
+and still be unreliable.
+
+18
+00:00:32.084 --> 00:00:34.154
+We check it against nearby keyframes.
+
+19
+00:00:35.690 --> 00:00:37.475
+Follow this candidate point.
+
+20
+00:00:37.475 --> 00:00:39.161
+Its depth and the camera poses
+
+21
+00:00:39.161 --> 00:00:41.231
+project it into the neighboring view.
+
+22
+00:00:42.688 --> 00:00:45.117
+The projection falls between pixels.
+
+23
+00:00:45.117 --> 00:00:46.141
+We inspect the four
+
+24
+00:00:46.141 --> 00:00:47.691
+surrounding depth samples.
+
+25
+00:00:49.168 --> 00:00:50.352
+Compare these samples
+
+26
+00:00:50.352 --> 00:00:51.817
+with the projected depth.
+
+27
+00:00:51.817 --> 00:00:53.283
+A difference below the threshold
+
+28
+00:00:53.283 --> 00:00:54.973
+gives support from this view.
+
+29
+00:00:56.389 --> 00:00:58.894
+This second point fails the same check.
+
+30
+00:00:58.894 --> 00:01:00.637
+We also test the other neighbors
+
+31
+00:01:00.637 --> 00:01:02.646
+before deciding whether to reject it.
+
+32
+00:01:04.262 --> 00:01:06.606
+No checked view supports this point,
+
+33
+00:01:06.606 --> 00:01:07.588
+so it is removed.
+
+34
+00:01:07.588 --> 00:01:09.176
+The supported point is kept.
+
+35
+00:01:10.712 --> 00:01:12.576
+Repeating this check across the image
+
+36
+00:01:12.576 --> 00:01:14.540
+filters unsupported geometry
+
+37
+00:01:14.540 --> 00:01:16.544
+before Gaussian initialization.
+
+38
+00:01:16.544 --> 00:01:18.248
+This checks depth agreement,
+
+39
+00:01:18.248 --> 00:01:19.515
+not semantic identity.
+
+40
+00:01:23.722 --> 00:01:25.850
+This is a real office reconstruction.
+
+41
+00:01:25.850 --> 00:01:27.435
+Camera estimates can change
+
+42
+00:01:27.435 --> 00:01:28.559
+after parts of the map
+
+43
+00:01:28.559 --> 00:01:29.747
+have already been built.
+
+44
+00:01:31.204 --> 00:01:33.007
+The amber Gaussians were created
+
+45
+00:01:33.007 --> 00:01:34.891
+by the highlighted keyframe.
+
+46
+00:01:34.891 --> 00:01:36.720
+Their source label is retained.
+
+47
+00:01:38.156 --> 00:01:40.299
+When that camera pose is corrected,
+
+48
+00:01:40.299 --> 00:01:41.542
+the existing Gaussians
+
+49
+00:01:41.542 --> 00:01:43.129
+do not move automatically.
+
+50
+00:01:44.585 --> 00:01:46.430
+We apply the same pose correction
+
+51
+00:01:46.430 --> 00:01:48.776
+to their positions and orientations.
+
+52
+00:01:48.776 --> 00:01:50.200
+Each source group follows
+
+53
+00:01:50.200 --> 00:01:51.187
+its own keyframe.
+
+54
+00:01:52.643 --> 00:01:54.547
+Here we isolate one source group
+
+55
+00:01:54.547 --> 00:01:57.332
+from a recorded update, replayed slowly.
+
+56
+00:01:57.332 --> 00:01:59.056
+The surrounding map stays fixed
+
+57
+00:01:59.056 --> 00:01:59.802
+as a reference.
+
+58
+00:02:01.459 --> 00:02:03.189
+Now compare two saved runs,
+
+59
+00:02:03.506 --> 00:02:04.509
+rendered from the same
+
+60
+00:02:04.509 --> 00:02:05.939
+corrected camera pose.
+
+61
+00:02:07.476 --> 00:02:09.600
+Without retrospective correction,
+
+62
+00:02:09.600 --> 00:02:11.744
+the desk and chair boundaries are blurred.
+
+63
+00:02:11.744 --> 00:02:12.606
+With correction,
+
+64
+00:02:12.606 --> 00:02:14.214
+their edges are better preserved.
+
+65
+00:02:18.189 --> 00:02:19.933
+Two processes share the work.
+
+66
+00:02:19.933 --> 00:02:21.581
+The tracker follows the camera,
+
+67
+00:02:21.877 --> 00:02:22.920
+while the mapper builds
+
+68
+00:02:22.920 --> 00:02:24.047
+the Gaussian scene.
+
+69
+00:02:25.504 --> 00:02:27.030
+When a keyframe is ready,
+
+70
+00:02:27.030 --> 00:02:28.939
+the tracker sends a numbered task
+
+71
+00:02:28.939 --> 00:02:29.606
+to the mapper.
+
+72
+00:02:31.203 --> 00:02:33.025
+Notice that tracking can continue
+
+73
+00:02:33.025 --> 00:02:34.548
+while the mapper is still working
+
+74
+00:02:34.548 --> 00:02:35.494
+on the first task.
+
+75
+00:02:36.990 --> 00:02:38.292
+The next keyframe,
+
+76
+00:02:38.292 --> 00:02:40.035
+and then a correction to the first,
+
+77
+00:02:40.035 --> 00:02:41.142
+join the same queue.
+
+78
+00:02:41.437 --> 00:02:42.805
+Their order is preserved.
+
+79
+00:02:44.320 --> 00:02:46.369
+But pending work cannot grow forever.
+
+80
+00:02:46.665 --> 00:02:48.849
+Here, three unconfirmed tasks
+
+81
+00:02:48.849 --> 00:02:50.297
+fill the illustrated limit.
+
+82
+00:02:51.792 --> 00:02:53.556
+The fourth task must wait.
+
+83
+00:02:53.556 --> 00:02:54.979
+Even the task being mapped
+
+84
+00:02:54.979 --> 00:02:56.648
+still counts toward this limit.
+
+85
+00:02:58.183 --> 00:02:59.866
+Only after finishing a task
+
+86
+00:02:59.866 --> 00:03:02.249
+does the mapper send confirmation back.
+
+87
+00:03:02.249 --> 00:03:03.551
+This frees one place
+
+88
+00:03:03.551 --> 00:03:04.598
+for the waiting task.
+
+89
+00:03:06.133 --> 00:03:08.315
+The remaining tasks finish in order.
+
+90
+00:03:08.315 --> 00:03:10.277
+Before closing, the system waits
+
+91
+00:03:10.277 --> 00:03:12.384
+until every update has been confirmed.
+
+92
+00:03:16.010 --> 00:03:18.513
+Now, step inside the reconstructed maps.
+
+93
+00:03:18.852 --> 00:03:20.962
+From furnished rooms and cluttered desks,
+
+94
+00:03:21.258 --> 00:03:23.489
+to aerial views and outdoor driving,
+
+95
+00:03:23.805 --> 00:03:25.409
+these are saved reconstructions
+
+96
+00:03:25.409 --> 00:03:27.359
+from monocular RGB sequences.
+
+97
+00:03:27.676 --> 00:03:28.863
+The camera paths come
+
+98
+00:03:28.863 --> 00:03:30.276
+from the estimated poses.
+
+99
+00:03:31.486 --> 00:03:32.990
+Now compare Splat SLAM,
+
+100
+00:03:32.990 --> 00:03:35.258
+HI SLAM two, and STREAM SLAM.
+
+101
+00:03:35.258 --> 00:03:36.682
+Watch the enlarged views
+
+102
+00:03:36.682 --> 00:03:38.493
+for edges and fine textures.
+
+103
+00:03:55.576 --> 00:03:57.047
+Across eight Replica scenes,
+
+104
+00:03:57.384 --> 00:03:58.589
+mean trajectory error is
+
+105
+00:03:58.589 --> 00:04:00.783
+zero point two three six centimeters.
+
+106
+00:04:01.180 --> 00:04:02.643
+Mean PSNR is
+
+107
+00:04:02.643 --> 00:04:04.713
+thirty nine point six zero decibels,
+
+108
+00:04:05.130 --> 00:04:06.012
+using the paper's
+
+109
+00:04:06.012 --> 00:04:07.721
+observed view evaluation.
+
+110
+00:04:08.955 --> 00:04:10.416
+In one common hardware run
+
+111
+00:04:10.416 --> 00:04:11.702
+on Replica office zero,
+
+112
+00:04:12.037 --> 00:04:13.298
+peak GPU memory is
+
+113
+00:04:13.298 --> 00:04:15.005
+five point two three gibibytes,
+
+114
+00:04:15.300 --> 00:04:16.981
+compared with ten point two six
+
+115
+00:04:16.981 --> 00:04:18.582
+for HI SLAM two.
+
+116
+00:04:18.582 --> 00:04:20.467
+Processing throughput is similar.
+
+117
+00:04:20.467 --> 00:04:22.937
+These timings exclude scale calibration.
+
+118
+00:04:24.075 --> 00:04:25.180
+Sparse measurements.
+
+119
+00:04:25.180 --> 00:04:26.606
+Consistent geometry.
+
+120
+00:04:26.606 --> 00:04:27.534
+Concurrent mapping.
+
+121
+00:04:27.951 --> 00:04:29.379
+Explore the reconstructions
+
+122
+00:04:29.379 --> 00:04:30.645
+and camera trajectories
+
+123
+00:04:30.645 --> 00:04:32.097
+on our project page.

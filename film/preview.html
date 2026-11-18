@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>STREAM-SLAM · Film 02</title>
+<link rel="stylesheet" href="player.css?v=16">
+<script>if(new URLSearchParams(location.search).has('embed'))document.documentElement.classList.add('embedded');</script>
+<style>.embedded main{max-width:none;padding:0}.embedded header,.embedded footer,.embedded #chapters,.embedded .player-note{display:none}.embedded #player{border:0}.embedded body{overflow:hidden}.embedded .controls{min-height:64px}.embedded #captionText{font-size:clamp(12px,2.05vw,27px)}@media(max-width:700px){.embedded .controls{min-height:114px}}</style>
+</head>
+<body>
+<main>
+  <header><h1>STREAM-SLAM <small> / FILM 02</small></h1><small>English narration · 04:32</small></header>
+  <div id="player">
+    <div class="screen">
+      <video id="film" controls playsinline preload="auto" width="1280" height="720"
+             poster="film-poster.jpg" tabindex="0" aria-label="Video: click or press Space to play/pause">
+        <source src="STREAM-SLAM_Film_v2_preview_720p.mp4?v=11" type="video/mp4">
+        <track kind="subtitles" label="English" srclang="en" src="English.vtt?v=11" default>
+        <track kind="subtitles" label="Chinese" srclang="zh" src="Chinese.vtt?v=11">
+      </video>
+      <div id="captions" hidden aria-hidden="true"><span id="captionText"></span></div>
+      <div id="feedback" aria-hidden="true"></div>
+    </div>
+    <div class="controls" hidden>
+      <button id="playPause" type="button" aria-label="Play"><span id="playIcon" aria-hidden="true">▶</span> <span id="playLabel">Play</span></button>
+      <span id="time" class="time">00:00 / 04:32</span>
+      <input id="seek" type="range" min="0" max="272.966667" step="0.01" value="0" aria-label="Playback progress">
+      <button id="mute" type="button" aria-label="Mute">Sound On</button>
+      <select id="captionLanguage" aria-label="Subtitle language">
+        <option value="en">Subtitles: English</option><option value="zh">Subtitles: Chinese</option><option value="off">Subtitles: Off</option>
+      </select>
+      <select id="quality" aria-label="Quality"><option value="720">720p</option><option value="1080">1080p</option></select>
+      <button id="fullscreen" type="button">Fullscreen</button>
+    </div>
+  </div>
+  <div class="player-note"><span>Click the video or press Space to play/pause</span><span id="status" role="status" aria-live="polite"></span></div>
+  <nav id="chapters" aria-label="Video chapters"></nav>
+  <footer><a href="STREAM-SLAM_Film_v2_1080p.mp4" download>Download 1080p MP4 ↓</a><a href="STREAM-SLAM_Chinese.srt?v=11" download>Chinese subtitles SRT ↓</a><a href="STREAM-SLAM_English.srt?v=11" download>English SRT ↓</a><a href="English_narration.txt">English narration</a></footer>
+</main>
+<script src="player.js?v=17"></script>
+<script>if(document.documentElement.classList.contains('embedded')){const player=document.querySelector('#player');new ResizeObserver(()=>{if(!document.fullscreenElement)parent.postMessage({type:'stream-film-size',height:Math.ceil(player.getBoundingClientRect().height)},location.origin)}).observe(player);}</script>
+<script src="../i18n.js?v=17"></script>
+</body>
+</html>

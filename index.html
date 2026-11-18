@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="STREAM-SLAM: Sparse Tracking and Resource-Efficient Asynchronous Mapping with 3D Gaussians.">
+  <meta name="theme-color" content="#111714">
+  <title>STREAM-SLAM</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ctext y='31' font-size='32'%3ES%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css?v=type16">
+  <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
+  <script src="gallery-data.js?v=17" defer></script>
+  <script src="viewer-data.js?v=pose-overlay" defer></script>
+  <script src="script.js?v=17" defer></script>
+  <link rel="stylesheet" href="design.css?v=16">
+  <script src="design.js?v=16" defer></script>
+<link rel="stylesheet" href="refinements.css?v=17">
+<script src="i18n.js?v=17" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#video">Skip to the project film</a>
+  <nav class="site-nav" aria-label="Main navigation"><a class="wordmark" href="#top">STREAM-SLAM</a><div><a href="#video">Film</a><a href="#viewer">Explore</a><a href="#results">Results</a><a href="assets/stream-slam-paper.pdf" target="_blank" rel="noopener">Paper ↗</a><button class="language-switch" id="languageSwitch" type="button" aria-label="Switch to Chinese">中文</button></div></nav>
+  <main>
+    <header class="hero" id="top">
+      <div class="hero-body"><div class="hero-copy"><h1>STREAM<span>–</span>SLAM</h1><p class="hero-description">Sparse Tracking and Resource-Efficient Asynchronous Mapping with 3D Gaussians</p><div class="hero-actions"><a class="primary-link" href="#video">Watch the film <span>↗</span></a><a class="paper-link" href="assets/stream-slam-paper.pdf" target="_blank" rel="noopener">Paper <span>↗</span></a></div></div>
+      <figure class="hero-visual"><video id="heroMotion" autoplay muted loop playsinline preload="metadata" poster="assets/hero-reconstruction.jpg" aria-label="Animated cutaway of the actual saved office0 Gaussian reconstruction and estimated camera path"><source src="assets/hero-reconstruction.mp4" type="video/mp4"></video><button class="hero-motion-toggle" id="heroMotionToggle" type="button" aria-label="Pause reconstruction animation">Ⅱ</button><figcaption><span>REPLICA / OFFICE 0</span><span class="hero-legend"><i></i> Estimated camera path</span><a href="#viewer">Explore in 3D ↗</a></figcaption></figure></div>
+    </header>
+    <section id="video" class="media-section film-section"><div class="section-heading"><div><h2>Film</h2></div><p>04:32 · English narration<br>English / Chinese subtitles</p></div><div class="film-frame"><iframe id="projectFilm" src="film/preview.html?embed=1&amp;revision=11" title="STREAM-SLAM project film with English and Chinese subtitles" loading="lazy" allow="fullscreen" allowfullscreen></iframe></div><div class="section-foot"><a href="film/STREAM-SLAM_Film_v2_1080p.mp4" download>Download film · 1080p ↓</a></div></section>
+    <section id="viewer" class="media-section">
+      <div class="section-heading"><div><h2>Interactive reconstruction</h2></div><p>Drag to orbit · Scroll to zoom</p></div>
+      <div id="viewerDatasetTabs" class="dataset-tabs" role="tablist" aria-label="Interactive reconstruction datasets"></div>
+      <div class="viewer-controls"><label for="viewerSceneSelect">Scene</label><select id="viewerSceneSelect"></select><span id="viewerSceneCount"></span></div>
+      <details class="scene-previews"><summary>Browse scene thumbnails</summary><div id="viewerScenes" class="viewer-scenes" role="tabpanel" aria-label="Choose a reconstruction"></div></details>
+      <div class="viewer-shell">
+        <div id="splatViewer" class="splat-canvas" aria-label="Interactive Replica office0 Gaussian map">
+          <div class="viewer-loading"><button id="viewerLoad" type="button" data-action="load">Explore in 3D <span aria-hidden="true">→</span></button></div>
+        </div>
+        <div class="camera-playback"><button id="cameraPlay" type="button" disabled>Play camera path</button><input id="cameraSeek" type="range" min="0" max="1" step="0.001" value="0" aria-label="Camera path progress" disabled><output id="cameraFrame">0 / 0</output><select id="cameraSpeed" aria-label="Camera playback speed"><option value="20">20 s</option><option value="40" selected>40 s</option><option value="80">80 s</option></select></div><div class="viewer-toolbar"><span id="viewerStatus" role="status">Replica · office0</span><div class="viewer-toggles"><label title="Final estimated camera path, overlaid through surfaces"><input id="viewerTrajectory" type="checkbox" checked><i class="path-key" aria-hidden="true"></i>Trajectory</label><label title="Sparse camera frustums show the saved pose orientations"><input id="viewerCameras" type="checkbox" checked><i class="camera-key" aria-hidden="true"></i>Cameras</label></div><button id="viewerOverview" type="button" disabled>Fit path</button><button id="viewerReset" type="button" disabled>Reset view</button></div>
+      </div>
+      <p class="figure-caption"><a id="viewerDownload" href="assets/stream-slam-replica-office0.ply" download>Download Gaussian map</a></p>
+    </section>
+    <section class="results-section" id="results">
+      <div class="section-heading"><div><h2>Reconstruction results</h2></div></div>
+      <div class="dataset-tabs" id="datasetTabs" role="tablist" aria-label="Dataset"></div>
+      <div class="scene-controls"><label for="sceneSelect">Scene</label><select id="sceneSelect" aria-controls="sceneMetricTable resultGallery"></select></div>
+      <div class="scene-summary"><table id="sceneMetricTable" aria-describedby="sceneMetricNote"></table><div class="rank-legend" aria-label="Ranking colors"><span><i></i>1st</span><span><i></i>2nd</span><span><i></i>3rd</span></div></div>
+      <div class="gallery-summary"><span id="galleryCount" role="status"></span><span>Click an image to compare</span></div>
+      <div id="resultGallery" role="tabpanel" tabindex="0"></div>
+      <noscript><p>Enable JavaScript to browse the scene gallery. <a href="assets/stream-slam-paper.pdf">View the paper</a>.</p></noscript>
+      <details class="evaluation-notes"><summary>Evaluation &amp; sources</summary><p id="sceneMetricNote"></p><p>Paper-scene ATE and PSNR retain the linked paper’s values. Other scenes use recorded sequence evaluations. ATE is reported in centimeters for indoor datasets and EuRoC, and meters for Waymo and KITTI. Rankings are computed separately for each metric among available results: lower ATE and higher PSNR are better. Red, orange and yellow indicate the three best distinct values, including ties. “—” indicates no valid sequence-level record; no selected-frame score is used as a scene mean.</p><p>The scene table stays fixed when changing the camera view. Quantitative tables include all methods reported in the paper; qualitative images come from saved local runs and do not reproduce the source publications' exact runs. Each image row uses the same physical input frame. Missing local renders are not substituted with another method's output.</p><p>EuRoC: local HI-SLAM2 images use 20 Hz; STREAM-SLAM uses 10 Hz. Frames are matched by camera timestamp. KITTI 04: Photo-SLAM uses stereo input; the other displayed methods use monocular RGB.</p></details>
+    </section>
+
+    <section id="method" class="media-section method-section">
+      <div class="section-heading"><div><h2>Method</h2></div></div>
+      <details class="method-detail"><summary>View the pipeline diagram <span aria-hidden="true">＋</span></summary>
+      <a class="method-figure" href="assets/pipeline-overview.png" target="_blank" rel="noopener" aria-label="Open full-size method diagram"><img src="assets/pipeline-overview.png" alt="STREAM-SLAM pipeline: sparse tracking, source-owned correction, and asynchronous Gaussian mapping" loading="lazy" width="1600" height="775"></a>
+      <p class="method-caption"><a href="assets/pipeline-overview.png" target="_blank" rel="noopener">Open full-size figure ↗</a></p>
+      </details>
+    </section>
+
+    <section id="abstract" class="paper-section"><div class="section-heading"><h2>Abstract</h2></div><div class="abstract-copy"><p>Monocular Gaussian SLAM estimates camera motion and builds photorealistic 3D maps from RGB video, but dense tracking and Gaussian mapping demand substantial GPU compute and memory. Replacing dense tracking with sparse tracking reduces the tracking burden, but two challenges remain when connecting a loop-closing sparse tracker to dense Gaussian mapping. First, sparse tracking provides insufficient geometric priors for dense Gaussian initialization, while existing densification either retains spatial distortions and cross-frame fluctuations after global alignment or reintroduces dense computation through windowed multiview estimation. Second, loop closure revises previously published keyframes, making the Gaussian map inconsistent with the final trajectory if these states are treated as immutable. </p><p>To address these challenges, we present STREAM-SLAM, which treats tracking outputs as a stream of revisable sparse geometric states. Sparse-conditioned depth completion anchors dense geometry to tracked sparse depths, and multiview support filtering rejects unsupported Gaussian initialization. Retrospective correction uses source-keyframe ownership to propagate subsequent Sim(3), pose, and depth changes to the corresponding Gaussians. A bounded correction-aware asynchronous protocol decouples tracking and mapping while ensuring complete delivery of keyframes and corrections. </p><p>Experiments on Replica, EuRoC, TUM RGB-D, and Waymo demonstrate competitive trajectory accuracy and strong reconstruction quality with high processing efficiency and low peak GPU memory.</p></div></section>
+  </main>
+  <footer><a class="wordmark" href="#top">STREAM-SLAM ↑</a><span>Monocular reconstruction with 3D Gaussians · 2026</span></footer>
+
+  <dialog id="comparisonDialog" aria-labelledby="comparisonTitle">
+    <div class="dialog-header"><h2 id="comparisonTitle">Compare reconstructions</h2><button class="dialog-close" type="button" aria-label="Close comparison">×</button></div>
+    <div class="dialog-tools"><label for="comparisonMethod">Compare with</label><select id="comparisonMethod"></select><span id="comparisonFrame"></span></div>
+    <div class="comparison-stage" id="comparisonStage">
+      <img id="comparisonBase" alt="">
+      <div class="comparison-ours"><img id="comparisonOurs" alt=""></div>
+      <div class="comparison-divider"><span aria-hidden="true">↔</span></div>
+      <input id="comparisonRange" type="range" min="0" max="100" value="50" aria-label="Reveal STREAM-SLAM reconstruction">
+      <div class="comparison-label ours">STREAM-SLAM</div><div class="comparison-label baseline" id="comparisonLabel"></div>
+    </div>
+    <p id="comparisonNote"></p>
+  </dialog>
+</body>
+</html>

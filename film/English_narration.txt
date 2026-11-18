@@ -1,0 +1,29 @@
+01. STREAM-SLAM
+One camera. A moving viewpoint. A detailed three dimensional world. This is STREAM SLAM: sparse tracking and resource efficient asynchronous mapping with three dimensional Gaussians.
+
+02. Sparse to dense
+The tracker follows a small set of image patches. Their depths anchor a pretrained completion model, turning sparse measurements into dense geometry. That geometry supplies the starting points for our Gaussian map.
+
+03. Check another view
+Completed depth can look smooth and still be unreliable. We check it against nearby keyframes. Follow this candidate point. Its depth and the camera poses project it into the neighboring view. The projection falls between pixels. We inspect the four surrounding depth samples. Compare these samples with the projected depth. A difference below the threshold gives support from this view. This second point fails the same check. We also test the other neighbors before deciding whether to reject it. No checked view supports this point, so it is removed. The supported point is kept. Repeating this check across the image filters unsupported geometry before Gaussian initialization. This checks depth agreement, not semantic identity.
+
+04. Keep the map connected
+This is a real office reconstruction. Camera estimates can change after parts of the map have already been built. The amber Gaussians were created by the highlighted keyframe. Their source label is retained. When that camera pose is corrected, the existing Gaussians do not move automatically. We apply the same pose correction to their positions and orientations. Each source group follows its own keyframe. Here we isolate one source group from a recorded update, replayed slowly. The surrounding map stays fixed as a reference. Now compare two saved runs, rendered from the same corrected camera pose. Without retrospective correction, the desk and chair boundaries are blurred. With correction, their edges are better preserved.
+
+05. Two processes. One ordered stream.
+Two processes share the work. The tracker follows the camera, while the mapper builds the Gaussian scene. When a keyframe is ready, the tracker sends a numbered task to the mapper. Notice that tracking can continue while the mapper is still working on the first task. The next keyframe, and then a correction to the first, join the same queue. Their order is preserved. But pending work cannot grow forever. Here, three unconfirmed tasks fill the illustrated limit. The fourth task must wait. Even the task being mapped still counts toward this limit. Only after finishing a task does the mapper send confirmation back. This frees one place for the waiting task. The remaining tasks finish in order. Before closing, the system waits until every update has been confirmed.
+
+06. Reconstructed from RGB
+Now, step inside the reconstructed maps. From furnished rooms and cluttered desks, to aerial views and outdoor driving, these are saved reconstructions from monocular RGB sequences. The camera paths come from the estimated poses.
+
+07. Look closer
+Now compare Splat SLAM, HI SLAM two, and STREAM SLAM. Watch the enlarged views for edges and fine textures.
+
+08. Replica / eight scenes
+Across eight Replica scenes, mean trajectory error is zero point two three six centimeters. Mean PSNR is thirty nine point six zero decibels, using the paper's observed view evaluation.
+
+09. A smaller memory footprint
+In one common hardware run on Replica office zero, peak GPU memory is five point two three gibibytes, compared with ten point two six for HI SLAM two. Processing throughput is similar. These timings exclude scale calibration.
+
+10. STREAM-SLAM
+Sparse measurements. Consistent geometry. Concurrent mapping. Explore the reconstructions and camera trajectories on our project page.
